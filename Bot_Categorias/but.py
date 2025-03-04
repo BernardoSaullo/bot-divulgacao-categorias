@@ -120,7 +120,7 @@ def listar_grupos(message):
 def listar_grupos(message):
     handleListarGruposGeral(bot, message)
 
-@bot.callback_query_handler(func=lambda call: call.data.startswith('aprovar_') or call.data.startswith('banir_'))
+@bot.callback_query_handler(func=lambda call: call.data.startswith('aprovar_') or call.data.startswith('banir_') or call.data.startswith('rejeitar_'))
 def aprova_ou_rejeita(call):
     handle_aprova_ou_rejeita(bot, call)
 
@@ -160,7 +160,7 @@ def handle_new_chat_member(event: ChatMemberUpdated):
             members_count = bot.get_chat_members_count(chat_id)
             print(f"Número de membros: {members_count}")
 
-            if members_count < 0:
+            if members_count < 150:
                 bot.leave_chat(chat_id)
                 bot.send_message(user_id, 'Você não tem integrantes suficientes para participar da lista🙁')
                 cursor.close()

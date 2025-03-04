@@ -26,13 +26,13 @@ def botoesMenuUser():
     if mensagem_suporte:
         suporte_url = mensagem_suporte['Mensagem_aroba_suporte']
     else:
-        suporte_url = "https://t.me/BrasilListBot"  # Fallback para um valor padrão, caso não encontre
+        suporte_url = "https://t.me/CaktusListBot"  # Fallback para um valor padrão, caso não encontre
 
     # Verificar se a consulta de informações retornou um valor
     if mensagem_info:
         info_url = mensagem_info['Mensagem_aroba_informacoes']
     else:
-        info_url = "https://t.me/BrasilListBot"  # Fallback para um valor padrão, caso não encontre
+        info_url = "https://t.me/CaktusListBot"  # Fallback para um valor padrão, caso não encontre
 
     # Fechar o cursor e a conexão
     cursor.close()
@@ -76,8 +76,8 @@ def botoesAdicaoCanalouGrupo():
     markup = InlineKeyboardMarkup()
 
     markup.row(
-        InlineKeyboardButton("Adicionar Grupo 👥", url='http://t.me/BrasilListBot?startgroup&admin=delete_messages+invite_users+pin_messages'),
-        InlineKeyboardButton("Adicionar Canal 📢", url='http://t.me/BrasilListBot?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+pin_messages+manager_chat')
+        InlineKeyboardButton("Adicionar Grupo 👥", url='http://t.me/CaktusListBot?startgroup&admin=delete_messages+invite_users+pin_messages'),
+        InlineKeyboardButton("Adicionar Canal 📢", url='http://t.me/CaktusListBot?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+pin_messages+manager_chat')
     )
 
     # Adicionando o botão "🏠 Início"

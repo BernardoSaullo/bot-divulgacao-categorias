@@ -17,7 +17,7 @@ def conectar_ao_banco():
         return err
     
 
-bot = telebot.TeleBot(token="8056015158:AAHhlZpicpzmFaUU1fhftC8jItCq9edA5Dw", parse_mode='HTML')
+bot = telebot.TeleBot(token="7754411017:AAEns1ic-BClUs6ETcywg1mJ-GRIo7DTQGY", parse_mode='HTML')
 
 aguardando_adm_id = {}
 aguardando_exclusao = {}

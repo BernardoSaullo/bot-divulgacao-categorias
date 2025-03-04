@@ -132,16 +132,18 @@ def handleListarGruposAdulto(bot, message):
         if not grupos:
             bot.send_message(message.chat.id, "Nenhum grupo encontrado.")
             return
-        bot.send(message.chat.id, "----Grupos e Canais da Categoria Adulto----")
+        bot.send_message(message.chat.id, "----Grupos e Canais da Categoria Adulto----")
 
         # Enviar informações de cada grupo
         for grupo in grupos:
             # Criar botões "Aprovar", "Banir Grupo" e "Banir Usuário"
             markup = types.InlineKeyboardMarkup()
             approve_button = types.InlineKeyboardButton("Aprovar Grupo", callback_data=f"aprovar_{grupo['id']}")
+            rejeitar_button = types.InlineKeyboardButton("Rejeitar Grupo", callback_data=f"rejeitar_{grupo['id']}")
             ban_group_button = types.InlineKeyboardButton("Banir Grupo", callback_data=f"banir_grupo_{grupo['id']}")
             ban_user_button = types.InlineKeyboardButton("Banir Usuário", callback_data=f"banir_usuario_{grupo['id']}")
-            markup.add(approve_button, ban_group_button, ban_user_button)
+            markup.add(ban_group_button, ban_user_button,rejeitar_button, approve_button)
+
 
             # Enviar a mensagem com o link e os botões
             bot.send_message(
@@ -181,15 +183,16 @@ def handleListarGruposGeral(bot, message):
         if not grupos:
             bot.send_message(message.chat.id, "Nenhum grupo encontrado.")
             return
-        bot.send(message.chat.id, "----Grupos e Canais da Categoria Geral----")
+        bot.send_message(message.chat.id, "----Grupos e Canais da Categoria Geral----")
         # Enviar informações de cada grupo
         for grupo in grupos:
             # Criar botões "Aprovar", "Banir Grupo" e "Banir Usuário"
             markup = types.InlineKeyboardMarkup()
             approve_button = types.InlineKeyboardButton("Aprovar Grupo", callback_data=f"aprovar_{grupo['id']}")
+            rejeitar_button = types.InlineKeyboardButton("Rejeitar Grupo", callback_data=f"rejeitar_{grupo['id']}")
             ban_group_button = types.InlineKeyboardButton("Banir Grupo", callback_data=f"banir_grupo_{grupo['id']}")
             ban_user_button = types.InlineKeyboardButton("Banir Usuário", callback_data=f"banir_usuario_{grupo['id']}")
-            markup.add(approve_button, ban_group_button, ban_user_button)
+            markup.add(ban_group_button, ban_user_button,rejeitar_button, approve_button)
 
             # Enviar a mensagem com o link e os botões
             bot.send_message(

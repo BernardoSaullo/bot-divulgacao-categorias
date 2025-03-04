@@ -47,13 +47,13 @@ def handleMenu(bot, message):
                 )
                 conexao.commit()
 
-                boas_vindas = f'Bem-vindo <a href="https://t.me/BravusListBot">{nome_usuario}</a>!'
+                boas_vindas = f'Bem-vindo <a href="https://t.me/CaktusListBot">{nome_usuario}</a>!'
 
 
                 # Armazena o message_id no dicionário global
 
             else:
-                boas_vindas = f'Bem-vindo de volta <a href="https://t.me/BravusListBot"><b>{nome_usuario}</b></a>!'
+                boas_vindas = f'Bem-vindo de volta <a href="https://t.me/CaktusListBot"><b>{nome_usuario}</b></a>!'
 
             # Obter mensagem de início
             cursor.execute("SELECT mensagem_inicio FROM mensagens LIMIT 1")
