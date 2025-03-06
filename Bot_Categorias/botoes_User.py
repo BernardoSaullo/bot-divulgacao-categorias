@@ -76,8 +76,8 @@ def botoesAdicaoCanalouGrupo():
     markup = InlineKeyboardMarkup()
 
     markup.row(
-        InlineKeyboardButton("Adicionar Grupo 👥", url='http://t.me/CaktusListBot?startgroup&admin=delete_messages+invite_users+pin_messages'),
-        InlineKeyboardButton("Adicionar Canal 📢", url='http://t.me/CaktusListBot?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+pin_messages+manager_chat')
+        InlineKeyboardButton("Adicionar Grupo 👥", url='http://t.me/Teste1_984o64_bot?startgroup&admin=delete_messages+invite_users+pin_messages'),
+        InlineKeyboardButton("Adicionar Canal 📢", url='http://t.me/Teste1_984o64_bot?startchannel&admin=post_messages+edit_messages+delete_messages+invite_users+pin_messages+manager_chat')
     )
 
     # Adicionando o botão "🏠 Início"

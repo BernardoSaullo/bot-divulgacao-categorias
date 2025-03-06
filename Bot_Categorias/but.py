@@ -116,6 +116,7 @@ def callback_inserir_fixado(call):
 def listar_grupos(message):
     handleListarGruposAdulto(bot, message)
 @bot.message_handler(commands=['listar_grupos_geral'])
+
 def listar_grupos(message):
     handleListarGruposGeral(bot, message)
 
@@ -159,7 +160,7 @@ def handle_new_chat_member(event: ChatMemberUpdated):
             members_count = bot.get_chat_members_count(chat_id)
             print(f"Número de membros: {members_count}")
 
-            if members_count < 150:
+            if members_count < 0:
                 bot.leave_chat(chat_id)
                 bot.send_message(user_id, 'Você não tem integrantes suficientes para participar da lista🙁')
                 cursor.close()

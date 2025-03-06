@@ -144,7 +144,6 @@ def handleListarGruposAdulto(bot, message):
             ban_user_button = types.InlineKeyboardButton("Banir Usuário", callback_data=f"banir_usuario_{grupo['id']}")
             markup.add(ban_group_button, ban_user_button,rejeitar_button, approve_button)
 
-
             # Enviar a mensagem com o link e os botões
             bot.send_message(
                 message.chat.id,
@@ -186,7 +185,7 @@ def handleListarGruposGeral(bot, message):
         bot.send_message(message.chat.id, "----Grupos e Canais da Categoria Geral----")
         # Enviar informações de cada grupo
         for grupo in grupos:
-            # Criar botões "Aprovar", "Banir Grupo" e "Banir Usuário"
+            # Criar botões "Aprovar", "Rejeitar", "Banir Grupo" e "Banir Usuário"
             markup = types.InlineKeyboardMarkup()
             approve_button = types.InlineKeyboardButton("Aprovar Grupo", callback_data=f"aprovar_{grupo['id']}")
             rejeitar_button = types.InlineKeyboardButton("Rejeitar Grupo", callback_data=f"rejeitar_{grupo['id']}")
@@ -213,7 +212,7 @@ def handle_aprova_ou_rejeita(bot, call):
     try:
         action, identifier = call.data.split('_', 1)
         conexao = conectar_ao_banco()
-    
+        print(conexao)
         if not conexao:
             bot.send_message(call.message.chat.id, "Erro ao acessar o banco de dados. Tente novamente mais tarde.")
             return
@@ -239,6 +238,26 @@ def handle_aprova_ou_rejeita(bot, call):
             # bot.send_message(grupo['id_usuario  '], f"Seu grupo {grupo['nome']} foi aprovado! Agora o bot enviará a lista todos os dias.\n\n Por fim escolha uma categoria para o seu bot", markup=botoesSelecaoCategoria(grupo['id']))
 
             bot.send_message(grupo['id_usuario'], f"Seu grupo {grupo['nome']} foi aprovado! Agora o bot enviará a lista todos os dias.")
+
+        elif action == 'rejeitar':
+            # Rejeitar o grupo
+            group_id = int(identifier)
+            cursor.execute("SELECT * FROM grupos_e_canais WHERE id = %s", (group_id,))
+            grupo = cursor.fetchone()
+
+            if not grupo:
+                bot.answer_callback_query(call.id, "Grupo não encontrado!")
+                return
+
+            # Remover o grupo
+            cursor.execute("DELETE FROM grupos_e_canais WHERE id = %s", (group_id,))
+            conexao.commit()
+
+            bot.answer_callback_query(call.id, "Grupo rejeitado com sucesso!")
+            print(grupo['id_usuario'])
+            bot.leave_chat(group_id)
+
+            bot.send_message(grupo['id_usuario'], f"Seu grupo {grupo['nome']} foi rejeitado por conta da categoria selecionada. Por favor, tente novamente.")
 
         elif action == 'banir':
             sub_action, group_id = identifier.split('_', 1)
@@ -309,3 +328,13 @@ def handle_aprova_ou_rejeita(bot, call):
 def handleConfirmarExlusao(bot, call):
 
     bot.send_message(call.message.chat.id, "Tem certeza que deseja excluir este administrador?", reply_markup=botoesConfirmarExlusao())
+
+
+# @bot.message_handler(commands=['listar_grupos_adulto'])
+# def listar_grupos(message):
+#     handleListarGruposAdulto(bot, message)
+
+
+# @bot.message_handler(commands=['listar_grupos_geral'])
+# def listar_grupos(message):
+#     handleListarGruposGeral(bot, message)
