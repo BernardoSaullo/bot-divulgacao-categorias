@@ -116,7 +116,6 @@ def callback_inserir_fixado(call):
 def listar_grupos(message):
     handleListarGruposAdulto(bot, message)
 @bot.message_handler(commands=['listar_grupos_geral'])
-
 def listar_grupos(message):
     handleListarGruposGeral(bot, message)
 

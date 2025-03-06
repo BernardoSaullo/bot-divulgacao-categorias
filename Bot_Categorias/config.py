@@ -6,9 +6,9 @@ def conectar_ao_banco():
     try:
    
        return mysql.connector.connect(
-                host="103.199.185.155",
-                user="usuario_remoto",
-                password="nova_senha",
+                host="127.0.0.1",
+                user="root",
+                password="root",
                 database="ItsInvictus2"
             )
         

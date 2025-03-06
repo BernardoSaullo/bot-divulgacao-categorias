@@ -122,19 +122,19 @@ def lista_adulta():
 
 
             # Adicionar os 10 primeiros
-            adicionar_botoes_em_pares(list(grupos_selecionados.items())[:5])  # 10 primeiros
+            adicionar_botoes_em_pares(list(grupos_selecionados.items())[:10])  # 10 primeiros
 
             # Adiciona o segundo botão fixado após os 10 primeiros
             if len(buttons) > 1:
                 markup.add(buttons[1])  # Adiciona o segundo botão fixado na segunda linha
 
             # Adicionar os 10 intermediários
-            adicionar_botoes_em_pares(list(grupos_selecionados.items())[5:10])  # 10 intermediários
+            adicionar_botoes_em_pares(list(grupos_selecionados.items())[10:20])  # 10 intermediários
 
             # Adicionar os 10 últimos
             if len(buttons) >= 1:
                     markup.add(buttons[2])  # 1 botão na primeira linha
-            adicionar_botoes_em_pares(list(grupos_selecionados.items())[10:])   # 10 últimos
+            adicionar_botoes_em_pares(list(grupos_selecionados.items())[20:])   # 10 últimos
 
 
             markup.add(
